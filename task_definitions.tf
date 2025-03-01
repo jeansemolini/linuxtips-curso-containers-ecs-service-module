@@ -3,7 +3,7 @@ resource "aws_ecs_task_definition" "main" {
 
   network_mode = "awsvpc"
 
-  requires_compatibilities = var.compatibilities
+  requires_compatibilities = var.capabilities
 
   cpu    = var.service_cpu
   memory = var.service_memory
