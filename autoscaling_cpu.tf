@@ -64,18 +64,18 @@ resource "aws_appautoscaling_policy" "cpu_low" {
 
     step_adjustment {
       metric_interval_upper_bound = 0
-      scaling_adjustment = var.scale_in_adjustment
+      scaling_adjustment          = var.scale_in_adjustment
     }
 
     step_adjustment {
       metric_interval_lower_bound = 0
       metric_interval_upper_bound = var.scale_in_cpu_threshold
-      scaling_adjustment = var.scale_in_adjustment
+      scaling_adjustment          = var.scale_in_adjustment
     }
 
     step_adjustment {
       metric_interval_lower_bound = var.scale_in_cpu_threshold
-      scaling_adjustment = 0
+      scaling_adjustment          = 0
     }
   }
 }

@@ -9,7 +9,7 @@ variable "service_name" {
 }
 
 variable "container_image" {
-  type = string
+  type        = string
   description = "Imagem com tag para deployment da aplicação no ECS"
 }
 
@@ -209,4 +209,16 @@ variable "scale_tracking_requests" {
   type        = number
   description = "Número alvo de solicitações por segundo (TPS) para o rastreamento de escala."
   default     = 0
+}
+
+variable "efs_volumes" {
+  type = list(object({
+    volume_name : string
+    file_system_id : string
+    file_system_root : string
+    mount_point : string
+    read_only : bool
+  }))
+  description = "Volumes EFS existentes para serem montados nas tasks do ECS"
+  default     = []
 }

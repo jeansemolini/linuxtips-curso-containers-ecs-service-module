@@ -25,10 +25,10 @@ resource "aws_ecs_service" "main" {
     }
   }
 
-  dynamic ordered_placement_strategy {
+  dynamic "ordered_placement_strategy" {
     for_each = var.service_launch_type == "EC2" ? [1] : []
     content {
-      type = "spread"
+      type  = "spread"
       field = "attribute:ecs.availability-zone"
     }
   }
@@ -54,7 +54,7 @@ resource "aws_ecs_service" "main" {
     ]
   }
 
- # platform_version = "LATEST"
+  # platform_version = "LATEST"
 
   depends_on = []
 }   
