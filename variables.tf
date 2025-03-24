@@ -100,6 +100,7 @@ variable "secrets" {
 
 variable "capabilities" {
   type        = list(string)
+  default     = []
   description = "Lista de capacidades, como EC2 ou FARGATE"
 }
 
