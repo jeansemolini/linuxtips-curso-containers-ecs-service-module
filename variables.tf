@@ -33,6 +33,42 @@ variable "service_port" {
   description = "Porta na qual o serviço estará acessível."
 }
 
+variable "use_lb" {
+  type        = bool
+  default     = true
+  description = "Habilita a exposição do serviço via load balancer"
+}
+
+variable "service_protocol" {
+  description = "Protocolo de serviço utilizado, como http, https, grpc ou tcp."
+  type        = string
+  default     = null
+}
+
+variable "protocol" {
+  description = "Protocolo a ser usado nas comunicações, como tcp ou udp."
+  type        = string
+  default     = "tcp"
+}
+
+variable "use_service_connect" {
+  description = "Habilita ou desabilita o uso do Service Connect."
+  type        = bool
+  default     = false
+}
+
+variable "service_connect_name" {
+  description = "Nome do Service Connect."
+  type        = string
+  default     = null
+}
+
+variable "service_connect_arn" {
+  description = "ARN do Service Connect."
+  type        = string
+  default     = null
+}
+
 variable "service_cpu" {
   type        = number
   description = "Quantidade de CPU alocada para o serviço, especificada em unidades de CPU do ECS."
@@ -45,6 +81,7 @@ variable "service_memory" {
 
 variable "service_listener" {
   type        = string
+  default = null
   description = "ARN do listener do Application Load Balancer que será usado pelo serviço."
 }
 
