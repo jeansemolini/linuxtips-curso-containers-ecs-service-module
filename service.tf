@@ -9,7 +9,7 @@ resource "aws_ecs_service" "main" {
   # launch_type = var.service_launch_type
 
   dynamic "service_registries" {
-    for_each = var.service_discovery_namespace != null ? [var.service_name] : null
+    for_each = var.service_discovery_namespace != null ? [var.service_name] : []
     content {
       registry_arn   = aws_service_discovery_service.main[0].arn
       container_name = service_registries.value
